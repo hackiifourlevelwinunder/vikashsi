@@ -35,24 +35,16 @@ display:flex;
 justify-content:center;
 align-items:center;
 height:100vh;
-color:#fff;
 }
 
 .card{
 background:#fff;
-color:#000;
 width:90%;
 max-width:380px;
 border-radius:25px;
 padding:30px 20px;
 text-align:center;
 box-shadow:0 15px 40px rgba(0,0,0,0.2);
-animation:fadeIn 0.6s ease;
-}
-
-@keyframes fadeIn{
-from{opacity:0;transform:translateY(20px);}
-to{opacity:1;transform:translateY(0);}
 }
 
 .profile{
@@ -89,12 +81,19 @@ h1{font-size:22px;margin-top:15px;font-weight:700;}
 .desc{
 font-size:14px;
 color:#444;
-margin-bottom:10px;
+margin-bottom:8px;
 }
 
 .urgency{
 font-size:13px;
 color:red;
+margin-bottom:10px;
+font-weight:600;
+}
+
+.live{
+font-size:13px;
+color:#28a745;
 margin-bottom:15px;
 font-weight:600;
 }
@@ -109,11 +108,6 @@ text-decoration:none;
 font-weight:700;
 font-size:16px;
 box-shadow:0 6px 20px rgba(0,0,0,0.2);
-transition:0.3s;
-}
-
-.btn:hover{
-transform:scale(1.05);
 }
 
 .footer{
@@ -143,9 +137,11 @@ color:#999;
 ⚠️ Limited Seats – Join Fast
 </div>
 
-<a href="https://t.me/+K7xocJt-Q4szZDI1"
-class="btn"
-onclick="fbq('track','Lead'); fbq('track','CompleteRegistration');">
+<div class="live" id="liveCount">
+👥 2700 people joined today
+</div>
+
+<a href="#" class="btn" onclick="trackAndRedirect()">
 👉 JOIN TELEGRAM NOW 🚀
 </a>
 
@@ -155,6 +151,23 @@ Privacy • Terms
 </div>
 
 </div>
+
+<script>
+function trackAndRedirect(){
+  fbq('track','Lead');
+
+  setTimeout(function(){
+    window.location.href='https://t.me/+K7xocJt-Q4szZDI1';
+  },500);
+}
+
+// Fake live counter (conversion boost)
+let count = 27;
+setInterval(()=>{
+  count++;
+  document.getElementById("liveCount").innerText = "👥 " + count + " people joined today";
+}, 8000);
+</script>
 
 </body>
 </html>
